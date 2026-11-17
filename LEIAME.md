@@ -1,29 +1,36 @@
-# Chocomilka — Controle de Estoque (versão revisada)
+# Chocomilka — Controle de Estoque
 
-## Como rodar
-    pip install flask
-    python app.py
-Abra http://127.0.0.1:5000
+Sistema web desenvolvido em Python com Flask e SQLite para gerenciamento e controle de estoque de produtos.
 
-## Estrutura
-    app.py            rotas Flask (agora também serve a página)
-    dao.py / models.py   mantidos (arquitetura do aluno preservada)
-    templates/index.html
-    static/style.css, static/script.js
-    chocomilka.db
+## Como executar o projeto
 
-## Bugs corrigidos no projeto original
-1. A rota "/" devolvia só JSON: a página nunca abria. Agora renderiza templates/index.html.
-2. index.html estava em pasta errada, com <form> duplicado dentro do <head>, tags <main>/<section> fechadas sem abrir, e sem o campo #busca (o script.js quebrava na 1ª linha).
-3. O botão Editar chamava GET /produtos/<id>, que não existia. Rota criada.
-4. innerHTML com texto digitado pelo usuário (risco de XSS). Agora o texto é escapado.
-5. Sem validação no servidor (int("abc") gerava erro 500, valores negativos eram aceitos). Agora retorna 400 com mensagem por campo.
+1. Instale a biblioteca Flask pelo terminal:
+   ```bash
+   pip install flask
+   ```
 
-## Design (UX/UI)
-- Conceito: o estoque de cada produto é um "tablete" de 12 quadradinhos que vai esvaziando (cheio = 3x o mínimo). Cor e texto indicam Em dia / Repor / Em falta.
-- Manchete em frase ("1 produto em falta e 2 para repor.") no lugar de cartões de números: a primeira coisa que se lê é o que precisa de ação.
-- Lista ordenada por urgência, filtros com contagem, busca sem acento, ajuste rápido − / +.
-- Cadastro/edição numa gaveta lateral; exclusão com confirmação que cita o produto; avisos (toasts) em vez de alert().
-- Estados vazios com ação: "Carregar exemplos" (para demonstração) e "Servidor desligado" com instrução.
-- Responsivo, teclado e leitores de tela (labels, aria, foco visível, alvos de 44px), respeita prefers-reduced-motion.
+2. Inicie o servidor local:
+   ```bash
+   python app.py
+   ```
+
+3. Abra o navegador e acesse:
+   `http://127.0.0.1:5000`
+
+## Estrutura do projeto
+
+- `app.py`: rotas da aplicação e validações da API.
+- `dao.py`: conexão e operações no banco de dados SQLite.
+- `models.py`: modelo de dados da classe `Produto`.
+- `chocomilka.db`: banco de dados com registros iniciais.
+- `templates/index.html`: interface principal do sistema.
+- `static/style.css` e `static/script.js`: estilos e interatividade da página.
+
+## Funcionalidades
+
+- Cadastro, edição e exclusão de produtos.
+- Ajuste rápido de quantidade (+1 / -1) direto na listagem.
+- Indicadores visuais de status do estoque (Em dia, Repor e Em falta).
+- Busca dinâmica e filtros por situação do estoque.
+
 - Fontes: Bricolage Grotesque e Instrument Sans (Google Fonts, com alternativa de sistema se estiver sem internet).
