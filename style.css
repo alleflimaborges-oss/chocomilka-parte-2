@@ -1,9 +1,4 @@
-/* ============================================================
-   CHOCOMILKA
-   Ideia central: o estoque de cada produto é um tablete de
-   chocolate (12 quadradinhos) que vai esvaziando.
-   O resto da interface fica quieto para ele aparecer.
-   ============================================================ */
+
 :root {
     --tinta:   #2a1610;
     --suave:   #6f5d55;
