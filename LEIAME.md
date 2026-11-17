@@ -5,8 +5,8 @@ Sistema web desenvolvido em Python com Flask e SQLite para gerenciamento e contr
 ## Como executar o projeto
 
 1. Instale a biblioteca Flask pelo terminal:
-   ```bash
-  & "C:\Program Files\Python314\python.exe" -m pip install flask
+   ```bash & "C:\Program Files\Python314\python.exe" -m pip install flask
+ 
    ```
 
 2. Inicie o servidor local:
